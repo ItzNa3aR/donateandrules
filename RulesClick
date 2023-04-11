@@ -1,0 +1,70 @@
+package puff;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+
+public class RulesClick implements Listener {
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+        Inventory inventory = event.getInventory();
+        ItemStack clicked = event.getCurrentItem();
+        if (inventory.getName().equals(ChatColor.BOLD + ""+ ChatColor.DARK_AQUA + "Rules" )) {
+            if (clicked.getType() == Material.BOOK) {
+                player.closeInventory();
+                player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Game Rules:");
+                player.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "1. No hacks/cheats/exploits/etc. If one of the staff members will see you hacking, even for fun, you will be punished.  ");
+                player.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "1.1. Using bugs in the game for your own benefit will be treated as using cheats. ");
+                player.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "2. No time-wasting to win the game. If you, for example, split arena and you will not reset, you will be punished. Play fair. ");
+                player.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "2.1. You cant afk until the end of the game also. You will still play from the moment you left for the AFK.");
+                player.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "3. No fixing matches (give wins to someone for them to go out from the group stage,+ for example). If you will fix match, you and the one you helped will be immediately kicked from the tournament. ");
+                player.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "4. If arena is split and there is no way to continue the match - /reset within 15 seconds. If you will try to kill the player, for example, with the help of the decay, and you wont reset arena, you will be punished. ");
+                player.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "4.1. If there is only 4 block jumps left (or 3 block diagonal) - you have to reset the arena. 4 block jumps (or 3 block diagonal) do not count as the way to continue the game.\n" +
+                        "RULE NUMBER 2 and NUMBER 4 is ONLY for official games. If you agreed to play without this rules, you can play, BUT only a friendly match. In official games, you HAVE TO follow all the rules");
+                event.setCancelled(true);
+            }
+
+            if (clicked.getType() == Material.APPLE) {
+                player.closeInventory();
+                player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Server Rules:");
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "1. No hacking/cheating/exploiting/etc. You will be permanently banned, if you use some of illegal stuff in our server.  ");
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "1.1 If you found a bug, report it to the staff immediately. If you will use this bug for winning games, for example, you will be punished just like you would be punished for using hacks. ");
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "2. No insults/racism/etc. It wont be tolerated in our server in ANY form.  ");
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "2.1. Dont use inappropriate or offensive skins (example: naked skin). ");
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "2.2. Dont use inappropriate or offensive nicknames. ");
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "2.3. If you won the custom role, do not write an offensive stuff in your role.");
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "3. Do not spam/flood. You can write maximum identical messages in a row. ");
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "3.1. If you will spam insults, you will be punished also for paragraph 2. ");
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "4. Do not provoke and do not succumb for provocations. The one who provoked you will receive a harsher punishment, but you will also receive punishment for succumb for the provocation (if you, for example, insulted the provocateur).");
+                player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "The punishment depends on the violation.");
+                event.setCancelled(true);
+            }
+
+            if (clicked.getType() == Material.MAP) {
+                player.closeInventory();
+                player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Staff Rules:");
+                player.sendMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "1. If you will punish a player WITHOUT the evidence, you will get warned. So if you saw the punishment, try to screenshot it first, and then you can punish players.   ");
+                player.sendMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "1.1. Admins can punish players without the evidence. ");
+                player.sendMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "2. You must follow all general rules. No exceptions.  ");
+                player.sendMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "2.1. If you wont follow general rules, you will be warned/kicked out of staff.  ");
+                event.setCancelled(true);
+            }
+            if (clicked.getType() == Material.BARRIER) {
+                player.closeInventory();
+                event.setCancelled(true);
+            }
+
+
+        }
+    }
+
+
+
+}
+
