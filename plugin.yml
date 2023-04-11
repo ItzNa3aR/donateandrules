@@ -1,0 +1,10 @@
+name: SnowCentral
+version: '${project.version}'
+main: puff.main
+website: by na3ar
+commands:
+  donate:
+    aliases:
+      - d
+  Rules:
+
