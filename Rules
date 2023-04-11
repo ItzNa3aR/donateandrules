@@ -1,0 +1,79 @@
+package puff;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Rules implements CommandExecutor {
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (cmd.getName().equalsIgnoreCase("Rules")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                openRulesMenu(player);
+            } else {
+                sender.sendMessage(ChatColor.RED + "ошибка, консоль? игрок?");
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public void openRulesMenu(Player player) {
+        Inventory RulesMenu = Bukkit.createInventory(null, 9, ChatColor.BOLD + ""+ ChatColor.DARK_AQUA + "Rules" );
+
+
+        ItemStack itemrules1 = new ItemStack(Material.BOOK);
+        ItemMeta item1rulesMeta = itemrules1.getItemMeta();
+        item1rulesMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "In-game rules");
+        itemrules1.setItemMeta(item1rulesMeta);
+        List<String> loreRules1 = new ArrayList<String>();
+        loreRules1.add(ChatColor.AQUA + "" + ChatColor.BOLD + "click to learn more about In-game  Rules");
+        item1rulesMeta.setLore(loreRules1);
+        itemrules1.setItemMeta(item1rulesMeta);
+
+        ItemStack itemRules2 = new ItemStack(Material.APPLE);
+        ItemMeta item2RulesMeta = itemRules2.getItemMeta();
+        item2RulesMeta.setDisplayName(ChatColor.GOLD+ "" + ChatColor.BOLD + "Server Rules");
+        List<String> loreRules2 = new ArrayList();
+        loreRules2.add(ChatColor.AQUA + "" + ChatColor.BOLD + "click to learn more about Server Rules");
+        item2RulesMeta.setLore(loreRules2);
+        itemRules2.setItemMeta(item2RulesMeta);
+
+        ItemStack itemRules3 = new ItemStack(Material.MAP);
+        ItemMeta item3RulesMeta = itemRules3.getItemMeta();
+        item3RulesMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Staff Rules: ");
+        List<String> loreRules3 = new ArrayList();
+        loreRules3.add(ChatColor.AQUA + "" + ChatColor.BOLD + "click to learn more about Staff Rules");
+        item3RulesMeta.setLore(loreRules3);
+        itemRules3.setItemMeta(item3RulesMeta);
+
+        ItemStack itemRules4 = new ItemStack(Material.BARRIER);
+        ItemMeta item4RulesMeta = itemRules4.getItemMeta();
+        item4RulesMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "SOON");
+        List<String> loreRules4= new ArrayList();
+        loreRules4.add(ChatColor.AQUA + "" + ChatColor.BOLD + "in a couple of years something will appear here");
+        item4RulesMeta.setLore(loreRules4);
+        itemRules4.setItemMeta(item4RulesMeta);
+
+
+
+
+        RulesMenu.setItem(1, itemrules1);
+        RulesMenu.setItem(3, itemRules2);
+        RulesMenu.setItem(5,itemRules3);
+        RulesMenu.setItem(7,itemRules4);
+
+        player.openInventory(RulesMenu);
+    }
+}
